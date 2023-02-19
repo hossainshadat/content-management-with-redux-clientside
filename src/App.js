@@ -1,11 +1,11 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Button } from "react-bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/routes";
 
 function App() {
   return (
     <div>
-      Hello world
-      <Button variant="success">click</Button>
+      <RouterProvider router={router} />
     </div>
   );
 }
