@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import AdminNav from "./Sidebar";
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div>
+      <AdminNav />
+      <div>Dashboard</div>
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
