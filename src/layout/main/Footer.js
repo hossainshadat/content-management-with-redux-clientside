@@ -6,13 +6,10 @@ const Footer = () => {
       class=""
       style={{
         backgroundColor: "#C8E6C9",
-        position: "absolute",
-        bottom: 0,
-        width: "100%",
       }}
     >
       <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 mt-5 border-top">
           <div class="col mb-3">
             <div class="lc-block mb-3">
               <a
