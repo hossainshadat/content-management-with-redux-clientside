@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./../../../components/ProductCard/ProductCard";
 import Row from "react-bootstrap/Row";
+import { useDispatch, useSelector } from "react-redux";
+import fetchingProductData from "../../../redux/thunk/fetchingProductData";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.product.products);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data.data));
+    dispatch(fetchingProductData());
   }, []);
+  console.log(products);
+  // const [products, setProducts] = useState([]);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/products")
+  //     .then((res) => res.json())
+  //     .then((data) => setProducts(data.data));
+  // }, []);
   // console.log(products);
   return (
     <div className="container">

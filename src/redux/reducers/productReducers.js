@@ -1,7 +1,7 @@
 import { LOAD_PRODUCT } from "../actionTypes/actionTypes";
 
 const initialState = {
-  product: [],
+  products: [],
 };
 
 const productReducers = (state = initialState, action) => {
@@ -11,6 +11,8 @@ const productReducers = (state = initialState, action) => {
         ...state,
         products: action.payload,
       };
+    default:
+      return state;
   }
 };
 
