@@ -32,7 +32,7 @@ const Home = () => {
         </div>
       </div>
       <div className="display-6 fw-bold text-center mb-5 pb-4">Products</div>
-      <Row xs={1} md={2} lg={3} xl={4} className="g-4 mb-2">
+      <Row xs={1} md={2} lg={3} className="g-4 mb-2">
         {products.map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}

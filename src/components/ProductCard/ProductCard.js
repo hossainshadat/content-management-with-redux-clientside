@@ -17,6 +17,14 @@ function ProductCard(product) {
               longer.
             </Card.Text>
           </Card.Body>
+          <Row xs={1} md={2} className="g-2 mb-2">
+            <button type="button" class="btn btn-outline-success">
+              Success
+            </button>
+            <button type="button" class="btn btn-outline-success">
+              Success
+            </button>
+          </Row>
         </Card>
       </Col>
     </div>
