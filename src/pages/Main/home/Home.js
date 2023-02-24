@@ -3,6 +3,7 @@ import ProductCard from "./../../../components/ProductCard/ProductCard";
 import Row from "react-bootstrap/Row";
 import { useDispatch, useSelector } from "react-redux";
 import fetchingProductData from "../../../redux/thunk/fetchingProductData";
+import Spinner from "../../../components/spinner/Spinner";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,18 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchingProductData());
   }, []);
-  console.log(products);
+
+  let content;
+
+  if (products.length === 0) {
+    return (content = <Spinner />);
+  }
+
+  // if (products.length){
+  //   return content = <Spinner />
+  // }
+
+  // console.log(products);
   // const [products, setProducts] = useState([]);
 
   // useEffect(() => {
@@ -20,6 +32,7 @@ const Home = () => {
   //     .then((data) => setProducts(data.data));
   // }, []);
   // console.log(products);
+
   return (
     <div className="container">
       <div className=" text-center py-3">
