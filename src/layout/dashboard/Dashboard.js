@@ -1,12 +1,13 @@
 import React from "react";
-import AdminNav from "./Sidebar";
+import DashSidebar from "./sidebar/DashSidebar";
+import DashHeader from "./DashHeader/DashHeader";
 
 const Dashboard = () => {
   return (
-    <div>
-      <AdminNav />
-      <div>Dashboard</div>
-    </div>
+    <>
+      <DashHeader />
+      <DashSidebar />
+    </>
   );
 };
 
