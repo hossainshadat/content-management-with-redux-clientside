@@ -6,6 +6,7 @@ import Cart from "./../pages/Main/cart/Cart";
 import Dashboard from "./../layout/dashboard/Dashboard";
 import AddProducts from "../pages/Dashboard/AddProducts/AddProducts";
 import DashboardProducts from "../pages/Dashboard/DashboardProducts/DashboardProducts";
+import UpdateProduct from "./../pages/Dashboard/updateProducts/UpdateProduct";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "/addproducts",
         element: <AddProducts />,
+      },
+      {
+        path: "/updateproduct",
+        element: <UpdateProduct />,
       },
     ],
   },
