@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { removeProductData } from "./../../../redux/thunk/removeProduct";
+import { removeProduct } from "../../../redux/actions/productAction";
 
 const ProductsList = ({ product }) => {
-  console.log(product);
+  const dispatch = useDispatch();
   return (
     <tr>
       <td>
@@ -15,7 +18,10 @@ const ProductsList = ({ product }) => {
       <td className="align-middle">{product.model}</td>
       <td className="align-middle">{product.brand}</td>
       <td className="align-middle text-center">
-        <span className="me-4">
+        <button
+          onClick={() => dispatch(removeProductData(product._id))}
+          className="me-4 btn border-0"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -30,7 +36,7 @@ const ProductsList = ({ product }) => {
               d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
             />
           </svg>
-        </span>
+        </button>
         <span>
           <NavLink to="/updateproduct">
             <svg

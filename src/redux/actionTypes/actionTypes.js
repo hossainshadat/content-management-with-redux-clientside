@@ -1,1 +1,2 @@
 export const LOAD_PRODUCT = "LOAD_PRODUCT";
+export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
