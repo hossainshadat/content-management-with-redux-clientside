@@ -13,21 +13,40 @@ const AddProducts = () => {
   // console.log(imageHostKey);
 
   const submit = (data) => {
-    const product = {
-      model: data.model,
-      brand: data.brand,
-      rating: data.rating,
-      price: data.price,
-      keyFeature: [
-        data.keyFeature1,
-        data.keyFeature2,
-        data.keyFeature3,
-        data.keyFeature4,
-      ],
-      spec: [],
-      status: status,
-    };
-    console.log(product);
+    // console.log(data.image[0]);
+    const img = data.image[0];
+    const formData = new FormData();
+    formData.append("image", img);
+
+    const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          data.image = result.data.url;
+
+          const product = {
+            model: data.model,
+            image: data.image,
+            brand: data.brand,
+            rating: data.rating,
+            price: data.price,
+            keyFeature: [
+              data.keyFeature1,
+              data.keyFeature2,
+              data.keyFeature3,
+              data.keyFeature4,
+            ],
+            spec: [],
+            status: status,
+          };
+          console.log(product);
+        }
+      });
   };
   return (
     <div className="container">
@@ -51,7 +70,12 @@ const AddProducts = () => {
             Image
           </label>
 
-          <input type="file" class="form-control" id="image" />
+          <input
+            {...register("image")}
+            type="file"
+            class="form-control"
+            id="image"
+          />
         </div>
 
         <div class="col-md-4">
