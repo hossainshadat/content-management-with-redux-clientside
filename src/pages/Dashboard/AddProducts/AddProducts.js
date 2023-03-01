@@ -1,16 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const AddProducts = () => {
+  const { register, handleSubmit, control } = useForm();
+  const [status, setStatus] = useState(false);
+
+  const statusChange = () => {
+    setStatus(!status);
+  };
+
+  const imageHostKey = process.env.REACT_APP_imgbb_key;
+  // console.log(imageHostKey);
+
+  const submit = (data) => {
+    const product = {
+      model: data.model,
+      brand: data.brand,
+      rating: data.rating,
+      price: data.price,
+      keyFeature: [
+        data.keyFeature1,
+        data.keyFeature2,
+        data.keyFeature3,
+        data.keyFeature4,
+      ],
+      spec: [],
+      status: status,
+    };
+    console.log(product);
+  };
   return (
     <div className="container">
       <h1 className="display-4 fw-semibold text-center my-4">ADD PRODUCTS</h1>
-      <form class="row g-3">
+      <form onSubmit={handleSubmit(submit)} class="row g-3">
         <div class="col-md-6">
           <label for="modelName" class="form-label">
             Model Name
           </label>
 
-          <input type="text" class="form-control" id="modelName" />
+          <input
+            {...register("model")}
+            type="text"
+            class="form-control"
+            id="modelName"
+          />
         </div>
 
         <div class="col-md-6">
@@ -26,10 +59,14 @@ const AddProducts = () => {
             Brand
           </label>
 
-          <select class="form-select" aria-label="Default select example">
+          <select
+            {...register("brand")}
+            class="form-select"
+            aria-label="Default select example"
+          >
             <option selected>Brand</option>
-            <option value="1">Intel</option>
-            <option value="2">AMD</option>
+            <option value="intel">Intel</option>
+            <option value="amd">AMD</option>
           </select>
         </div>
 
@@ -38,50 +75,85 @@ const AddProducts = () => {
             Rating 🌟🌟🌟🌟🌟
           </label>
 
-          <input type="number" class="form-control" id="rating" />
+          <input
+            {...register("rating", { min: 1, max: 5 })}
+            type="number"
+            class="form-control"
+            id="rating"
+          />
         </div>
 
         <div class="col-md-4">
-          <label for="amount" class="form-label">
-            Amount
+          <label for="price" class="form-label">
+            Price
           </label>
 
-          <input type="number" class="form-control" id="amount" />
+          <input
+            {...register("price")}
+            type="number"
+            class="form-control"
+            id="price"
+          />
         </div>
 
         <div class="col-md-6">
-          <label for="keyDeature1" class="form-label">
+          <label for="keyFeature1" class="form-label">
             Key Feature 1
           </label>
 
-          <input type="text" class="form-control" id="keyDeature1" />
+          <input
+            {...register("keyFeature1")}
+            type="text"
+            class="form-control"
+            id="keyFeature1"
+          />
         </div>
 
         <div class="col-md-6">
-          <label for="keyDeature2" class="form-label">
+          <label for="keyFeature2" class="form-label">
             Key Feature 2
           </label>
 
-          <input type="text" class="form-control" id="keyDeature3" />
+          <input
+            {...register("keyFeature2")}
+            type="text"
+            class="form-control"
+            id="keyFeature2"
+          />
         </div>
         <div class="col-md-6">
-          <label for="keyDeature3" class="form-label">
+          <label for="keyFeature3" class="form-label">
             Key Feature 3
           </label>
 
-          <input type="text" class="form-control" id="keyDeature3" />
+          <input
+            {...register("keyFeature3")}
+            type="text"
+            class="form-control"
+            id="keyFeature3"
+          />
         </div>
 
         <div class="col-md-6">
-          <label for="keyDeature4" class="form-label">
+          <label for="keyFeature4" class="form-label">
             Key Feature 4
           </label>
 
-          <input type="text" class="form-control" id="keyDeature4" />
+          <input
+            {...register("keyFeature4")}
+            type="text"
+            class="form-control"
+            id="keyFeature4"
+          />
         </div>
         <div class="col-3">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="status" />
+            <input
+              onChange={() => statusChange(setStatus(!status))}
+              class="form-check-input"
+              type="checkbox"
+              id="status"
+            />
 
             <label class="form-check-label" for="status">
               Status
