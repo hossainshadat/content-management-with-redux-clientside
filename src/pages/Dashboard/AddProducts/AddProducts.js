@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addProductData } from "./../../../redux/thunk/addProductData";
 
 const AddProducts = () => {
-  const { register, handleSubmit, control } = useForm();
+  const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
   const [status, setStatus] = useState(false);
 
   const statusChange = () => {
@@ -44,7 +47,7 @@ const AddProducts = () => {
             spec: [],
             status: status,
           };
-          console.log(product);
+          dispatch(addProductData(product));
         }
       });
   };
