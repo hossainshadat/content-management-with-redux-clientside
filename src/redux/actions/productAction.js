@@ -21,3 +21,11 @@ export const addProduct = (product) => {
     payload: product,
   };
 };
+
+export const updateProduct = (product) => {
+  console.log(product);
+  return {
+    type: updateProduct,
+    payload: product,
+  };
+};

@@ -1,4 +1,5 @@
 import { addProduct } from "./../actions/productAction";
+import { toast } from "react-hot-toast";
 
 export const addProductData = (product) => {
   return async (dispatch, getState) => {
@@ -13,6 +14,7 @@ export const addProductData = (product) => {
 
     console.log(data);
     if (data.acknowledged) {
+      toast.success(data.message);
       dispatch(
         addProduct({
           _id: data.insertedId,

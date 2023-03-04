@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { removeProductData } from "./../../../redux/thunk/removeProduct";
-import { removeProduct } from "../../../redux/actions/productAction";
 
 const ProductsList = ({ product }) => {
   const dispatch = useDispatch();
@@ -38,7 +37,7 @@ const ProductsList = ({ product }) => {
           </svg>
         </button>
         <span>
-          <NavLink to="/updateproduct">
+          <NavLink to={`/updateproduct/${product._id}`}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

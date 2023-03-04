@@ -1,4 +1,8 @@
-import { LOAD_PRODUCT, REMOVE_PRODUCT } from "../actionTypes/actionTypes";
+import {
+  LOAD_PRODUCT,
+  REMOVE_PRODUCT,
+  UPDATE_PRODUCT,
+} from "../actionTypes/actionTypes";
 import { ADD_PRODUCT } from "./../actionTypes/actionTypes";
 
 const initialState = {
@@ -6,7 +10,6 @@ const initialState = {
 };
 
 const productReducers = (state = initialState, action) => {
-  // console.log(action.payload, state);
   switch (action.type) {
     case LOAD_PRODUCT:
       return {
@@ -25,6 +28,19 @@ const productReducers = (state = initialState, action) => {
       return {
         ...state,
         products: [...state.products, action.payload],
+      };
+
+    case UPDATE_PRODUCT:
+      const updateProduct = { ...action.payload };
+      return {
+        // ...state,
+        products: [...state.products].map((product) => {
+          if (product._id === updateProduct._id) {
+            return updateProduct;
+          } else {
+            return product;
+          }
+        }),
       };
     default:
       return state;

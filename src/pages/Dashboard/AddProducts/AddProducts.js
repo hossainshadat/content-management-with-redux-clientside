@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addProductData } from "./../../../redux/thunk/addProductData";
 
 const AddProducts = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const [status, setStatus] = useState(false);
@@ -47,6 +49,7 @@ const AddProducts = () => {
             spec: [],
             status: status,
           };
+          navigate("/admin");
           dispatch(addProductData(product));
         }
       });
